@@ -18,7 +18,7 @@ public class PageResponseDTO<E> {
 
     private boolean prev, next;
 
-    private int totalCount;
+    private int totalCount, prevPage, nextPage;
 
     @Builder(builderMethodName = "withAll")
     public PageResponseDTO(List<E> dtoList, PageRequestDTO pageRequestDTO, long totalCount) {
@@ -37,8 +37,19 @@ public class PageResponseDTO<E> {
 
         this.prev = start > 1;
 
+
+
         this.next =  totalCount > end * pageRequestDTO.getSize();
 
         this.pageNumList = IntStream.rangeClosed(start,end).boxed().collect(Collectors.toList());
+
+        if(prev) {
+            this.prevPage = start -1;
+        }
+
+        if(next) {
+            this.nextPage = end + 1;
+        }
+
     }
 }
