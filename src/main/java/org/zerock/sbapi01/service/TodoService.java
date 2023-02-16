@@ -1,5 +1,7 @@
 package org.zerock.sbapi01.service;
 
+import org.zerock.sbapi01.dto.PageRequestDTO;
+import org.zerock.sbapi01.dto.PageResponseDTO;
 import org.zerock.sbapi01.dto.TodoDTO;
 
 public interface TodoService {
@@ -11,4 +13,6 @@ public interface TodoService {
     void modify(TodoDTO todoDTO);
 
     void remove(Long tno);
+
+    PageResponseDTO<TodoDTO> getList(PageRequestDTO pageRequestDTO);
 }

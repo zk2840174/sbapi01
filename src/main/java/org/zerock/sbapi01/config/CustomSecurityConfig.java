@@ -17,11 +17,13 @@ import java.util.Arrays;
 @Log4j2
 public class CustomSecurityConfig {
 
+
     @Bean
     public SecurityFilterChain filterChain(final HttpSecurity http) throws Exception {
 
         http.authorizeHttpRequests()
-        .requestMatchers("/api1/*").permitAll();
+                .requestMatchers("**/favicon.ico").permitAll()
+                .requestMatchers("/api1/**").permitAll();
 
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.csrf().disable();
