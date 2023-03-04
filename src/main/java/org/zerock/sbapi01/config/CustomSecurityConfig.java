@@ -23,7 +23,11 @@ public class CustomSecurityConfig {
 
         http.authorizeHttpRequests()
                 .requestMatchers("**/favicon.ico").permitAll()
-                .requestMatchers("/api1/**").permitAll();
+                .requestMatchers("/api1/**").permitAll()
+                .requestMatchers("/upload/**").permitAll()
+                .requestMatchers("/kakao/login/*").permitAll()
+
+        ;
 
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.csrf().disable();
